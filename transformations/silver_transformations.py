@@ -39,7 +39,7 @@ def read_bronze():
             'order_id',
             'product_id',
             'revenue',
-            'date'.alias('order_date'),
+            col('date').alias('order_date'),
             'store_id',
             'comments',
             'customer_sentiments',
