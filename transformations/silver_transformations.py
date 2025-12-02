@@ -31,5 +31,20 @@ def read_bronze():
             'customer_sentiments',
             expr("ai_analyze_sentiment(comments)")
         )
-        .drop("order_status")
+        .withColumn(
+            'profit',
+            col("revenue") * 0.25
+        )
+        .select(
+            'order_id',
+            'product_id',
+            'revenue',
+            'date'.alias('order_date'),
+            'store_id',
+            'comments',
+            'customer_sentiments',
+            'order_state',
+            'profit',
+            'read_ts'
+            )
     )
