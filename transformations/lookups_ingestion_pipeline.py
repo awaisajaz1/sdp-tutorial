@@ -3,24 +3,12 @@ from pyspark.sql.functions import *
 
 # Materialized View from Source to Bronze
 @dp.materialized_view(
-    comment='Store Bronze Table',
-    name='sdp.bronze.stores'
+    comment='Sales Bronze Table',
+    name='sdp.bronze.sales'
 )
 def bronze_stores():
     return (
         spark.read
-        .table('sdp.source.stores')
-        .withColumn('read_ts', current_timestamp())
-    )
-
-
-@dp.materialized_view(
-    comment='Product Bronze Table',
-    name='sdp.bronze.products'
-)
-def bronze_products():
-    return(
-        spark.read
-        .table('sdp.source.products')
+        .table('sdp.source.sales')
         .withColumn('read_ts', current_timestamp())
     )
