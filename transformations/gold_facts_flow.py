@@ -18,7 +18,7 @@ def sales_transaction_with_dims():
         silver_sales.join(
             dim_product, 
             silver_sales.product_id == dim_product.product_id, "left"
-        ).filter(dim_product["prod__END_AT"].isNull()).
+        ).filter(dim_product["__END_AT"].isNull()).
         join(
             dim_store,
             silver_sales.store_id == dim_store.store_id, "left"

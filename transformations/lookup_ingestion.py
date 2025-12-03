@@ -9,8 +9,10 @@ from pyspark.sql.functions import *
 def bronze_stores():
     return (
         spark.readStream
+        # .option('readChangeFeed', 'true')
         .table('sdp.source.stores')
         .withColumn('read_ts', current_timestamp())
+        .select('store_id', 'store_name', 'read_ts')
     )
 
 
@@ -21,6 +23,14 @@ def bronze_stores():
 def bronze_products():
     return(
         spark.readStream
+        .option('readChangeFeed', 'true')
         .table('sdp.source.products')
         .withColumn('read_ts', current_timestamp())
+        .select(
+            'product_id',
+            'product_name',
+            'category',
+            'price', 
+            'read_ts' 
+        )
     )
