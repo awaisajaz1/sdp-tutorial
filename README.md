@@ -6,6 +6,8 @@ This folder defines all source code for the 'Spark-Declarative-Pipeline' pipelin
 - `transformations`: All dataset definitions and transformations.
 - `utilities`: Utility functions and Python modules used in this pipeline.
 
+![screenshot](process-flow/pipeline.png)
+
 ## Getting Started
 
 To get started, go to the `transformations` folder -- most of the relevant source code lives there:
