@@ -16,9 +16,12 @@ def products_with_sk():
         )
     )
 
+
+# in empty streaming table like below, if we have any expectation like data quality, we can use within the flow
 dp.create_streaming_table(
     name="sdp.gold.dim_products",
-    comment="Product dimension"
+    comment="Product dimension",
+    # expect_all = {"product_id": "product_id is not null"}
 )
 
 dp.create_auto_cdc_flow(
