@@ -72,5 +72,5 @@ for item in my_list:
     @dp.table(name=f"{catalog}.{schema}.{table}")
     def read_table():
         df = spark.readStream.table("sales_transaction_with_dims")
-        return df.filter(f"order_state == 'Paid'")
+        return df.filter(f"order_state == '{order_state}'")
 
