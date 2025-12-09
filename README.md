@@ -6,14 +6,7 @@ This folder defines all source code for the 'Spark-Declarative-Pipeline' pipelin
 - `transformations`: All dataset definitions and transformations.
 - `utilities`: Utility functions and Python modules used in this pipeline.
 
-### Pipeline Iteration one
-![screenshot](process-flow/pipeline.png)
-
-### Pipeline Iteration Two with Dynamically target creation  & Append Flow
-![screenshot](process-flow/pipeline_iteration_two.png)
-
 #### Spark-Declarative-Pipeline
-
 This pipeline leverages Databricks Lakeflow Declarative Pipelines to implement a robust medallion architecture (bronze, silver, gold layers) for both batch and streaming data. Key features include:
 
 - **Streaming Tables**: Real-time ingestion and processing using Lakeflow streaming tables.
@@ -23,6 +16,15 @@ This pipeline leverages Databricks Lakeflow Declarative Pipelines to implement a
 - **SCD Type 1 & 2**: Handles Slowly Changing Dimensions for accurate historical tracking.
 - **Dynamic Table Creation**: Uses metadata-driven for-loops to read and write tables programmatically.
 - **Declarative Syntax**: Clean, maintainable code using Lakeflow's Python and SQL APIs.
+
+### Pipeline Iteration one
+![screenshot](process-flow/pipeline.png)
+
+### Pipeline Iteration Two with Dynamically target creation  & Append Flow
+![screenshot](process-flow/pipeline_iteration_two.png)
+
+### Output: Powerbi
+![screenshot](process-flow/Dashbaord.png)
 
 ## Getting Started
 
