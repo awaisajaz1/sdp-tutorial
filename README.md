@@ -15,6 +15,7 @@ This pipeline leverages Databricks Lakeflow Declarative Pipelines to implement a
 - **Append Flows**: Efficiently appends new data to target tables.
 - **SCD Type 1 & 2**: Handles Slowly Changing Dimensions for accurate historical tracking.
 - **Dynamic Table Creation**: Uses metadata-driven for-loops to read and write tables programmatically.
+- **Expectations**: Automatically enforce data quality rules during pipeline execution, ensuring only valid and trusted data flows through
 - **Declarative Syntax**: Clean, maintainable code using Lakeflow's Python and SQL APIs.
 
 ### Pipeline Iteration one
