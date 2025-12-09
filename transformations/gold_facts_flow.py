@@ -54,8 +54,9 @@ dp.create_auto_cdc_flow(
     sequence_by=col("record_timestamp"),
     stored_as_scd_type=1
 )
+## ---- Fact Loading Completed ----
 
-
+#### Use Case: Use Loop to dynamically create tables based on metadata file and split the target table on the basis of order state
 ## Lets call a loop using metadata json file to read and write dynamic table
 def create_table_dynamically(order_state_value, catalog, schema, table):
     @dp.table(name=f"{catalog}.{schema}.{table}")
