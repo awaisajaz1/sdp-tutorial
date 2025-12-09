@@ -56,7 +56,10 @@ dp.create_auto_cdc_flow(
 )
 ## ---- Fact Loading Completed ----
 
+
+##################################################################################################################################
 #### Use Case: Use Loop to dynamically create tables based on metadata file and split the target table on the basis of order state
+##################################################################################################################################
 ## Lets call a loop using metadata json file to read and write dynamic table
 def create_table_dynamically(order_state_value, catalog, schema, table):
     @dp.table(name=f"{catalog}.{schema}.{table}")
@@ -82,3 +85,22 @@ for item in my_list:
 
     # Create the table function with captured values
     create_table_dynamically(order_state, catalog, schema, table)
+
+
+###########################################################################################################
+## Use Case: Use Append Flow to merge the data coming from two or more streams and write to a single table
+###########################################################################################################
+
+# Step 1: Create a target streaming table
+dp.create_streaming_table(
+    name="sdp.gold.sales_fact_append"
+)
+
+# Step 2: Create a flow to merge the data coming from two or more streams and write to a single table   
+dp.create_append_flow(target="sdp.gold.sales_fact_append")
+def paid_orders():
+    return spark.readStream.table("sdp.silver.silver_sales_order").filter("order_state == 'Paid'")
+
+dp.create_append_flow(target="sdp.gold.sales_fact_append")
+def failed_orders():
+    return spark.readStream.table("sdp.silver.silver_sales_order").filter("order_state == 'Failed'")
