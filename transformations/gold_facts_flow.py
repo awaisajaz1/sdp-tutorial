@@ -68,10 +68,7 @@ def create_table_dynamically(order_state_value, catalog, schema, table):
         return df.filter(f"order_state == '{order_state_value}'")
     return read_table
 
-with open(
-    "/Workspace/Users/awaisajaz1@gmail.com/sdp-tutorial/metadata/jobs.json",
-     "r"
-    ) as f:
+with open("/Workspace/Users/awaisajaz1@gmail.com/sdp-tutorial/metadata/jobs.json", "r") as f:
     my_list = json.load(f)
 
 for item in my_list:
